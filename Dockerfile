@@ -1,6 +1,8 @@
 FROM node:latest
-WORKDIR /usr/src/app
-COPY package*.json ./
+RUN mkdir -p /opt/nodejs
+ADD package.json /opt/nodejs
+WORKDIR /opt/nodejs
 RUN npm install
-COPY . .
-CMD [ "node", "app.js" ]
+EXPOSE 3000
+CMD ["npm", "run", "start"]
+ADD . /opt/nodejs
