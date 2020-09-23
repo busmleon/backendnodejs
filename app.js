@@ -6,6 +6,7 @@ const cors = require('cors');
 const keycloak = require('./config/keycloak-config').initKeycloak();
 const routerDB = require('./routes/db');
 const session = require('express-session');
+var http = require('http');
 
 // Constants
 const PORT = process.env.BACKEND_HOST_PORT;
@@ -37,5 +38,6 @@ app.use(cors(corsOption));
 app.use('/db', routerDB);
 
 //Hört Webadresse und Port ab
-app.listen(PORT, HOST);
+// app.listen(PORT, HOST);
+http.createServer(app).listen(PORT);
 
